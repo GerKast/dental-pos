@@ -2,7 +2,7 @@ import { PropsWithChildren, ReactNode } from 'react';
 import { usePage, Link } from '@inertiajs/react'; // Importante: usePage
 import { SidebarProvider, SidebarTrigger, SidebarInset } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
-import Dropdown from '@/Components/Dropdown'; // Mantenemos el dropdown original
+import Dropdown from '@/components/Dropdown'; // Mantenemos el dropdown original
 
 export default function Authenticated({ header, children }: PropsWithChildren<{ header?: ReactNode }>) {
     // Recuperamos el usuario autenticado como en el código original
