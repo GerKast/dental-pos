@@ -60,9 +60,8 @@ test('Dashboard muestra metricas correctas', function () {
     $response->assertInertia(fn (Assert $page) => $page
         ->component('Dashboard')
         // Verificamos que la prop 'metrics' tenga los valores exactos
-        // CORREGIDO: Usamos strings con decimales
-        ->where('metrics.total_sales', '150.00') 
-        ->where('metrics.today_sales', '100.00')
+        ->where('metrics.total_sales', 150) 
+        ->where('metrics.today_sales', 100)
         ->where('metrics.total_clients', 4) // El inicial + 3 creados
         ->where('metrics.low_stock', 2)     // Solo los 2 con stock < 5
     );
@@ -94,8 +93,7 @@ test('Dashboard enlista ordenes recientes correctamente', function () {
     $response->assertInertia(fn (Assert $page) => $page
         ->component('Dashboard')
         ->has('recent_orders', 5) // Debe traer solo 5, no las 11 totales
-        // La primera de la lista debe ser la última que creamos ($latestOrder)
-        ->where('recent_orders.0.total', '500.00') // El precio se guarda como string/decimal
+        ->where('recent_orders.0.total', 500)
         ->where('recent_orders.0.id', $latestOrder->id)
     );
 });
