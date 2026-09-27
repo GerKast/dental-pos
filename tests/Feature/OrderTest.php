@@ -100,3 +100,49 @@ test('Pagina de ticket de venta es visible', function () {
             ->has('order.client')   // Verificar que cargó el cliente
         );
 });
+
+test('Venta falla si la cantidad de un producto es negativa', function () {
+    $user = User::factory()->create();
+    $client = Client::factory()->create();
+
+    $product = Product::factory()->create([
+        'price' => 100,
+        'stock' => 10,
+    ]);
+
+    $response = $this->actingAs($user)->post('/pos', [
+        'client_id' => $client->id,
+        'cart' => [[
+            'id' => $product->id,
+            'quantity' => -5,
+        ]],
+    ]);
+
+    $response->assertSessionHasErrors('cart.0.quantity');
+
+    $this->assertDatabaseHas('products', [
+        'id' => $product->id,
+        'stock' => 10,
+    ]);
+
+    $this->assertDatabaseCount('orders', 0);
+    $this->assertDatabaseCount('order_items', 0);
+});
+
+test('Venta falla si el producto no existe', function () {
+    $user = User::factory()->create();
+    $client = Client::factory()->create();
+
+    $response = $this->actingAs($user)->post('/pos', [
+        'client_id' => $client->id,
+        'cart' => [[
+            'id' => 999999,
+            'quantity' => 1,
+        ]],
+    ]);
+
+    $response->assertSessionHasErrors('cart.0.id');
+
+    $this->assertDatabaseCount('orders', 0);
+    $this->assertDatabaseCount('order_items', 0);
+});

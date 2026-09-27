@@ -26,7 +26,9 @@ class OrderController extends Controller
     {
         $request->validate([
             'client_id' => 'required|exists:clients,id',
-            'cart' => 'required|array|min:1', // El carrito no puede estar vacío
+            'cart' => 'required|array|min:1',
+            'cart.*.id' => 'required|integer|exists:products,id',
+            'cart.*.quantity' => 'required|integer|min:1',
         ]);
 
         try {
