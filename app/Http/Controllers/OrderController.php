@@ -49,7 +49,9 @@ class OrderController extends Controller
 
                 // 2. Procesar cada item del carrito
                 foreach ($cartItems as $item) {
-                    $product = Product::find($item['id']);
+                    $product = Product::whereKey($item['id'])
+                        ->lockForUpdate()
+                        ->firstOrFail();
                     
                     // Verificar stock una última vez
                     if ($product->stock < $item['quantity']) {
