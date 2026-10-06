@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function () {
 
     // ruta modulo productos
     Route::resource('products', ProductController::class)
-    ->only(['index', 'store', 'update', 'destroy']);
+        ->only(['index', 'store']);
 
     // Ruta para el modulo clientes
     Route::resource('clients', ClientController::class)->only(['index', 'store', 'show']);
