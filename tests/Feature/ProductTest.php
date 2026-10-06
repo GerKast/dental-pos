@@ -36,3 +36,22 @@ test('Se pueden crear productos', function () {
         'code' => 'TEST-001',
     ]);
 });
+
+test('No se pueden crear productos con precio o stock negativos', function () {
+    $user = User::factory()->create();
+
+    $response = $this->actingAs($user)->post('/products', [
+        'code' => 'TEST-NEG',
+        'name' => 'Producto Inválido',
+        'brand' => 'TestBrand',
+        'price' => -100,
+        'stock' => -5,
+        'type' => 'frame',
+    ]);
+
+    $response->assertSessionHasErrors(['price', 'stock']);
+
+    $this->assertDatabaseMissing('products', [
+        'code' => 'TEST-NEG',
+    ]);
+});
