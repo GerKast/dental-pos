@@ -18,7 +18,8 @@ export default function POSIndex({ products, clients }: { products: Product[], c
     // Formulario para enviar al backend
     const { data, setData, post, processing, errors } = useForm({
         client_id: '',
-        cart: [] as any[]
+        cart: [] as any[],
+        error: ''
     });
 
     // Filtro de productos (Buscador)
@@ -150,6 +151,11 @@ export default function POSIndex({ products, clients }: { products: Product[], c
 
                     {/* Total y Botón Pagar */}
                     <div className="border-t pt-4 mt-4">
+                        {errors.error && (
+                            <p className="mb-4 text-sm text-red-600">
+                                {errors.error}
+                            </p>
+                        )}
                         <div className="flex justify-between items-center mb-4 text-xl font-bold">
                             <span>TOTAL:</span>
                             <span>${total.toLocaleString()}</span>

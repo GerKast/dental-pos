@@ -55,7 +55,7 @@ class OrderController extends Controller
                     
                     // Verificar stock una última vez
                     if ($product->stock < $item['quantity']) {
-                        throw new \Exception("Stock insuficiente para: " . $product->name);
+                        throw new \RuntimeException("Stock insuficiente para: " . $product->name);
                     }
 
                     // Crear detalle
@@ -82,8 +82,16 @@ class OrderController extends Controller
             //return redirect()->route('dashboard')->with('success', '¡Venta registrada con éxito!');
             return redirect()->route('pos.show', $order->id);
 
-        } catch (\Exception $e) {
-            return back()->withErrors(['error' => 'Error en la venta: ' . $e->getMessage()]);
+        } catch (\RuntimeException $e) {
+            return back()->withErrors([
+                'error' => $e->getMessage()
+            ]);
+        } catch (\Throwable $e) {
+            report($e);
+
+            return back()->withErrors([
+                'error' => 'No fue posible procesar la venta. Inténtalo nuevamente.'
+            ]);
         }
     }
 
