@@ -1,7 +1,17 @@
 <?php
 
-it('Retorna una respuesta correcta, "Status = 200"', function () {
+use App\Models\User;
+
+it('redirige a los visitantes al login', function () {
     $response = $this->get('/');
 
-    $response->assertStatus(200);
+    $response->assertRedirect(route('login'));
+});
+
+it('redirige a los usuarios autenticados al dashboard', function () {
+    $user = User::factory()->create();
+
+    $response = $this->actingAs($user)->get('/');
+
+    $response->assertRedirect(route('dashboard'));
 });
