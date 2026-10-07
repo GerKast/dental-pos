@@ -5,6 +5,18 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { DollarSign, Users, AlertTriangle, ShoppingBag } from "lucide-react";
 
 // Tipos para TypeScript
+type OrderStatus = 'pending' | 'paid' | 'delivered';
+
+type RecentOrder = {
+    id: number;
+    status: OrderStatus;
+    created_at: string;
+    total: string;
+    client: {
+        name: string;
+    };
+};
+
 type DashboardProps = {
     metrics: {
         total_sales: number;
@@ -12,7 +24,13 @@ type DashboardProps = {
         total_clients: number;
         low_stock: number;
     };
-    recent_orders: any[];
+    recent_orders: RecentOrder[];
+};
+
+const statusLabels: Record<OrderStatus, string> = {
+    pending: 'Pendiente',
+    paid: 'Pagada',
+    delivered: 'Entregada',
 };
 
 export default function Dashboard({ metrics, recent_orders }: DashboardProps) {
@@ -49,10 +67,10 @@ export default function Dashboard({ metrics, recent_orders }: DashboardProps) {
                         </CardContent>
                     </Card>
 
-                    {/* Tarjeta: Pacientes */}
+                    {/* Tarjeta: Clientes */}
                     <Card>
                         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                            <CardTitle className="text-sm font-medium">Pacientes</CardTitle>
+                            <CardTitle className="text-sm font-medium">Clientes</CardTitle>
                             <Users className="h-4 w-4 text-muted-foreground" />
                         </CardHeader>
                         <CardContent>
@@ -103,7 +121,7 @@ export default function Dashboard({ metrics, recent_orders }: DashboardProps) {
                                                 <TableCell>{order.client.name}</TableCell>
                                                 <TableCell>
                                                     <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full uppercase font-bold">
-                                                        {order.status}
+                                                        {statusLabels[order.status]}
                                                     </span>
                                                 </TableCell>
                                                 <TableCell>{new Date(order.created_at).toLocaleDateString()}</TableCell>

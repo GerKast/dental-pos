@@ -17,7 +17,7 @@ import { Link } from "@inertiajs/react"
 const items = [
   { title: "Dashboard", url: "/dashboard", icon: Home },
   { title: "Punto de Venta", url: "/pos", icon: ShoppingCart },
-  { title: "Pacientes", url: "/clients", icon: Users },
+  { title: "Clientes", url: "/clients", icon: Users },
   { title: "Inventario", url: "/products", icon: Package },
 ]
 
@@ -25,7 +25,7 @@ export function AppSidebar() {
   return (
     <Sidebar>
       <SidebarHeader className="p-4 font-bold text-xl">
-        🦷 Dental POS
+        👓 Optical POS
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>

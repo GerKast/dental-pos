@@ -27,10 +27,10 @@ export default function ClientShow({ client }: { client: any }) {
 
             <div className="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-6">
                 
-                {/* Columna Izquierda: Datos del Paciente */}
+                {/* Columna Izquierda: Datos del Cliente */}
                 <div className="md:col-span-1 space-y-6">
                     <Card>
-                        <CardHeader><CardTitle>Datos del Paciente</CardTitle></CardHeader>
+                        <CardHeader><CardTitle>Datos del Cliente</CardTitle></CardHeader>
                         <CardContent className="space-y-2">
                             <div><Label className="text-xs text-gray-500">Nombre</Label><p className="font-medium">{client.name}</p></div>
                             <div><Label className="text-xs text-gray-500">Documento</Label><p>{client.document}</p></div>
@@ -77,7 +77,7 @@ export default function ClientShow({ client }: { client: any }) {
                 <div className="md:col-span-2 space-y-4">
                     <h3 className="text-lg font-bold">Historial de Fórmulas</h3>
                     {client.prescriptions.length === 0 ? (
-                        <p className="text-gray-500">Este paciente no tiene fórmulas registradas.</p>
+                        <p className="text-gray-500">Este cliente no tiene fórmulas registradas.</p>
                     ) : (
                         client.prescriptions.map((prescription: any) => (
                             <Card key={prescription.id}>

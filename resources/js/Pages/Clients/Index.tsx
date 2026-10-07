@@ -21,16 +21,16 @@ export default function ClientsIndex({ clients }: { clients: any[] }) {
     };
 
     return (
-        <AuthenticatedLayout header={<h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200">Pacientes</h2>}>
-            <Head title="Pacientes" />
+        <AuthenticatedLayout header={<h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200">Clientes</h2>}>
+            <Head title="Clientes" />
             <div className="py-12"><div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
                     <div className="flex justify-between items-center mb-6">
-                        <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">Base de Datos de Pacientes</h3>
+                        <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">Base de Datos de Clientes</h3>
                         <Dialog open={open} onOpenChange={setOpen}>
-                            <DialogTrigger asChild><Button>+ Nuevo Paciente</Button></DialogTrigger>
+                            <DialogTrigger asChild><Button>+ Nuevo Cliente</Button></DialogTrigger>
                             <DialogContent>
-                                <DialogHeader><DialogTitle>Registrar Paciente</DialogTitle></DialogHeader>
+                                <DialogHeader><DialogTitle>Registrar Cliente</DialogTitle></DialogHeader>
                                 <form onSubmit={submit} className="space-y-4 mt-4">
                                     <div><Label>Cédula / DNI</Label><Input value={data.document} onChange={e => setData('document', e.target.value)} required /></div>
                                     <div><Label>Nombre Completo</Label><Input value={data.name} onChange={e => setData('name', e.target.value)} required /></div>

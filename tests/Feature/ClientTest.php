@@ -16,9 +16,9 @@ test('Es posible crear un nuevo cliente', function () {
 
     $response = $this->actingAs($user)->post('/clients', [
         'document' => '99887766',
-        'name' => 'Paciente de Prueba',
+        'name' => 'Cliente de Prueba',
         'phone' => '3001234567',
-        'email' => 'test@paciente.com',
+        'email' => 'test@cliente.com',
     ]);
 
     $response->assertSessionHasNoErrors();
