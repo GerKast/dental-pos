@@ -6,6 +6,28 @@ El sistema permite administrar productos y clientes, registrar fórmulas óptica
 
 Este proyecto fue desarrollado como proyecto práctico y posteriormente revisado y mejorado con el objetivo de consolidar buenas prácticas de desarrollo con Laravel, React y bases de datos relacionales.
 
+## Capturas de pantalla
+
+### Dashboard
+
+![Dashboard](docs/screenshots/dashboard.png)
+
+### Punto de venta
+
+![Punto de venta](docs/screenshots/pos.png)
+
+### Cliente y fórmulas ópticas
+
+![Cliente y fórmulas ópticas](docs/screenshots/cliente-formulas.png)
+
+### Comprobante de venta
+
+![Comprobante de venta](docs/screenshots/comprobante-venta.png)
+
+### Inventario
+
+![Inventario](docs/screenshots/inventario.png)
+
 ## Funcionalidades
 
 ### Productos
@@ -21,7 +43,7 @@ Este proyecto fue desarrollado como proyecto práctico y posteriormente revisado
 
 ### Punto de venta
 - Selección de productos y cantidades mediante un carrito de compra.
-- Asociación opcional de la venta con un cliente.
+- Selección obligatoria de un cliente para registrar la venta.
 - Cálculo del valor de la venta en el servidor.
 - Validación de productos, cantidades y disponibilidad de inventario.
 - Descuento automático de existencias después de una venta.
