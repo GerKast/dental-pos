@@ -105,8 +105,8 @@ El entorno de desarrollo recomendado utiliza Docker y Laravel Sail.
 ### 1. Clonar el repositorio
 
 ```bash
-git clone git@github.com:GerKast/dental-pos.git
-cd dental-pos
+git clone git@github.com:GerKast/optical-pos.git
+cd optical-pos
 ```
 
 ### 2. Crear el archivo de entorno

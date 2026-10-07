@@ -1,11 +1,13 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/laravel",
+    "name": "gerkast/optical-pos",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "Aplicacion web de punto de venta para la gestion de una optica.",
     "keywords": [
         "laravel",
-        "framework"
+        "react",
+        "pos",
+        "optical"
     ],
     "license": "MIT",
     "require": {
